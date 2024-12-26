@@ -27,7 +27,14 @@ jobs:
         run: bandit -c bandit.yml -r book-api/
 
       - name: Run Flake8
-        run: flake8
+        run: flake8 --format=default > flake8-report.txt
+
+      - name: Report Flake8 Issues
+        uses: reviewdog/action-flake8@v2
+        with:
+          flake8_flags: "."
+          reporter: github-pr-review
+          filter_mode: diff
 
   test:
     name: Run tests
