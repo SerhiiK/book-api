@@ -1,7 +1,6 @@
 name: Run tests
 
 on:
-  push:
   pull_request:
     branches:
       - main
@@ -32,7 +31,7 @@ jobs:
       - name: Report Flake8 Issues
         uses: reviewdog/action-flake8@v2
         with:
-          flake8_flags: "."
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
           filter_mode: diff
 
