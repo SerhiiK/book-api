@@ -25,15 +25,15 @@ jobs:
       - name: Run Bandit 
         run: bandit -c bandit.yml -r book-api/
 
-      - name: Run Flake8
-        run: flake8 --format=default > flake8-report.txt || true
+      # - name: Run Flake8
+      #   run: flake8 --format=default > flake8-report.txt || true
 
       - name: Report Flake8 Issues
         uses: reviewdog/action-flake8@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
-          filter_mode: diff_context
+          # reporter: github-pr-review
+          # filter_mode: diff_context
 
   test:
     name: Run tests
