@@ -8,6 +8,22 @@ on:
 
 jobs:
 
+  code-quality:
+    name: Check code quality
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install  flake8
+        run: pipx install flake8==
+
+      - name: Install  Bandit
+        run: pipx install bandit
+
+      - name: Run Bandit 
+        run: bandit -c bandit.yml -r book-api/
+
+
   test:
     name: Run tests
     runs-on: ubuntu-24.04
