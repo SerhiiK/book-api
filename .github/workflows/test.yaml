@@ -28,8 +28,5 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
-      - name: Go in venv
-        run: poetry shell
-
       - name: Run tests
-        run: pytest tests/
+        run: poetry run pytest tests/
