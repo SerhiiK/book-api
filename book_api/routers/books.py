@@ -22,7 +22,7 @@ async def read_books(db: Session = Depends(get_db)):
 
 @book.get(
     "/books/{book_id}",
-    summary="Get book Tittle by ID",
+    summary="Get book Title by ID",
     description="Return book by book_id.",
 )
 async def get_books_id(book_id: int, db: Session = Depends(get_db)):
@@ -54,7 +54,7 @@ async def create_book(book: Book, db: Session = Depends(get_db)):
     return created_book
 
 
-@book.put("/books/", summary="Edit book by ID")
+@book.put("/books/{book_id}", summary="Edit book by ID")
 def update_book(book_id: int, book: BookUpdate, db: Session = Depends(get_db)):
     try:
         updated_book = edit_the_book(db, book_id, book.model_dump(exclude_unset=True))

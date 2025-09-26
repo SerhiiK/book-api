@@ -7,4 +7,4 @@ run:
 	poetry run fastapi run book_api/main.py
 
 test:
-
+	poetry run pytest
