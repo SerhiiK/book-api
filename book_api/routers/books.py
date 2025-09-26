@@ -16,8 +16,8 @@ book = APIRouter()
 
 @book.get("/books/", summary="Get all books")
 async def read_books(db: Session = Depends(get_db)):
-    users = get_books(db)
-    return users
+    books_list = get_books(db)
+    return books_list
 
 
 @book.get(
