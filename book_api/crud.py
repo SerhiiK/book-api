@@ -32,7 +32,7 @@ def edit_the_book(db: Session, book_id: int, book_data: dict):
     return book_to_edit
 
 
-def delete_book_from_db(db: Session, book_id: int):
+def delete_book_from_db(db: Session, book_id: int) -> None:
     book_to_delete = db.query(Books).filter(Books.id == book_id).first()
 
     if not book_to_delete:
@@ -40,8 +40,3 @@ def delete_book_from_db(db: Session, book_id: int):
 
     db.delete(book_to_delete)
     db.commit()
-    return {
-        "id": book_to_delete.id,
-        "title": book_to_delete.title,
-        "author": book_to_delete.author,
-    }

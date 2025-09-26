@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi import APIRouter, HTTPException, Response, status, Depends
 from sqlalchemy.orm import Session
 from book_api.database import get_db
 from book_api.schemas import Book, BookUpdate
@@ -42,8 +42,8 @@ async def get_books_id(book_id: int, db: Session = Depends(get_db)):
 )
 def delete_book(book_id: int, db: Session = Depends(get_db)):
     try:
-        deleted_book = delete_book_from_db(db, book_id)
-        return {"message": "Book was deleted", "book": deleted_book}
+        delete_book_from_db(db, book_id)
+        return Response(status_code=status.HTTP_204_NO_CONTENT)
     except ValueError as e:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e))
 
