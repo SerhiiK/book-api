@@ -37,6 +37,12 @@ Execute the automated tests with:
 poetry run pytest
 ```
 
+Or invoke the Makefile shortcut:
+
+```bash
+make test
+```
+
 ## Project Structure
 
 - `book_api/` – Application modules including routers, schemas, and database setup.
